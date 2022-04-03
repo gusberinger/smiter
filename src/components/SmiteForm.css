@@ -51,11 +51,3 @@ input[type=checkbox] {
         padding: 10px;
     }
 }
-
-@media screen and (max-width: 600px) {
-    .item {
-        flex-direction: column;
-        background-color: inherit;
-        background: none;
-    }
-}
