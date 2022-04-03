@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import Button from './Button'
 
 const SmiteForm = ({childToParent}) => {
   
@@ -59,7 +60,8 @@ const SmiteForm = ({childToParent}) => {
         <input {...register("holy")} type="checkbox" label="holy-label" className='checkmark'/>
       </div>
 
-      <button className="btn">Roll Damage</button>
+      <Button>Roll Damage</Button>
+      {/* <button className="btn">Roll Damage</button> */}
 
     </form>
   )
