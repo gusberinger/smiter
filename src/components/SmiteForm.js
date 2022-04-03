@@ -54,6 +54,11 @@ const SmiteForm = ({childToParent}) => {
         <input {...register("improved")} type="checkbox" label="improved-label" className='checkmark'/>
       </div>
 
+      <div className="item">
+        <label forhtml="holy-label">Holy Avenger</label>
+        <input {...register("holy")} type="checkbox" label="holy-label" className='checkmark'/>
+      </div>
+
       <button className="btn">Roll Damage</button>
 
     </form>

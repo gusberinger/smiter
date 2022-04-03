@@ -1,4 +1,3 @@
-import { computeHeadingLevel } from '@testing-library/react'
 import React, {useState} from 'react'
 import SmiteForm from './SmiteForm'
 
@@ -31,9 +30,10 @@ const rollDice = (totalDice, sides, bonus) => {
   return total
 }
 
-const rollDamage = (sword, smiteLevel, special, criticalHit, improved) => {
+const rollDamage = (sword, smiteLevel, special, criticalHit, improved, holy) => {
   let smiteDice = 0
   let swordDice = sword.totalDice
+  let holyDice = 0
   if (smiteLevel > 0) {
     smiteDice = Math.min(1 + smiteLevel, 5) // 1st level smite is 2d8, capped at 5d8
   }
@@ -42,21 +42,28 @@ const rollDamage = (sword, smiteLevel, special, criticalHit, improved) => {
   if (improved) {
     smiteDice++;
   }
+  if (holy && special) {
+    holyDice = 2
+  }
   if (criticalHit) {
     smiteDice *= 2
     swordDice *= 2
-    console.log(swordDice)
+    holyDice *= 2
   }
   const swordDamage = rollDice(swordDice, sword.sides, sword.bonus)
   const smiteDamage = rollDice(smiteDice, 8, 0)
+  const holyDamage = rollDice(holyDice, 10, 0)
   const swordText = `${swordDice}d${sword.sides}`
   const smiteText = `${smiteDice}d8`
+  const holyText = `${holyDice}d10`
 
   return {
     swordDamage: swordDamage,
     smiteDamage: smiteDamage,
+    holyDamage: holyDamage,
     swordText: swordText,
-    smiteText: smiteText
+    smiteText: smiteText,
+    holyText: holyText
   }
 
 } 
@@ -68,10 +75,10 @@ const Smite = () => {
   const childToParent = (childData) => {
     console.log(childData)
     const sword = parseString(childData.swordDamage)
-    const damage = rollDamage(sword, childData.smiteLevel, childData.special, childData.critical, childData.improved)
+    const damage = rollDamage(sword, childData.smiteLevel, childData.special, 
+                              childData.critical, childData.improved, childData.holy)
     console.log(damage)
     setResults(damage)
-
   }
 
   return (
@@ -92,7 +99,7 @@ const Smite = () => {
           </p>
           <hr/>
           <p>
-            <i>Total Damage: </i> {results.swordDamage + results.smiteDamage}
+            <i>Total Damage: </i> {results.swordDamage + results.smiteDamage + results.holyDamage}
           </p>
           </>
           }
