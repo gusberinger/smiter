@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Button from './Button'
+import './SmiteForm.css'
 
 const SmiteForm = ({childToParent}) => {
   
