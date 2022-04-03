@@ -13,8 +13,8 @@ const SmiteForm = () => {
           {...register("swordDamage", {
             required: "Sword damage is required.",
             pattern: {
-              value: /^[0-9]+$/,
-              message: "The damage should be in the same format as 1d8+1."
+              value: /^(\d{1,2})d(\d{1,2})(\+\d+)?$/,
+              message: "Incorrect dice format."
             }
           })}
           type="text" 

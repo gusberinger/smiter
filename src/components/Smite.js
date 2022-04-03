@@ -1,14 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import SmiteForm from './SmiteForm'
 
-const Smite = () => {
+const Smite = (props) => {
   
-  const rollDamage = (smiteLevel, special, critical) => {
-
+  const handleSubmit = e => {
+    e.preventdefault()
+    const data = e.target
+    console.log(data)
   }
-  
+
   return (
-    <SmiteForm></SmiteForm>
+    <SmiteForm onSubmit={handleSubmit}></SmiteForm>
   )
 }
 
