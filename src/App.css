@@ -3,6 +3,10 @@
   width: min(90%, 90rem)
 }
 
+p {
+  margin: 0.5rem;
+}
+
 header,
 section {
   padding: 3rem 0;
@@ -20,19 +24,40 @@ body {
 
 form {
   display: flex;
-  /* align-items:baseline; */
+  background-color: #f4f4ff;
+  padding: 5%;
 }
 
 input, label {
   display: block;
+  margin: 0;
 }
 
 .item {
   margin-inline: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
 }
 
 small {
   font-size: 0.5em;
   font-style: italic;
   color: red;
+}
+
+.btn {
+  padding: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  form {
+    flex-direction: column;
+    align-items: right;
+  }
+
+  .item {
+    margin-block: 1rem;
+    flex-direction: block;
+  }
 }

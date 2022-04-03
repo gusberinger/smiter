@@ -48,7 +48,7 @@ const SmiteForm = ({childToParent}) => {
         <label forhtml="critical-label">Critical Hit</label>
         <input {...register("critical")} type="checkbox" label="critical-label"/>
       </div>
-      <button>Roll Damage</button>
+      <button className="btn">Roll Damage</button>
 
     </form>
   )

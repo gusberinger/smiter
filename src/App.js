@@ -7,6 +7,8 @@ function App() {
       <section>
         <div className="container">
           <h1>Smiter</h1>
+          <p>A paladin's companion tool.</p>
+          {/* <hr></hr> */}
           <Smite></Smite>
         </div>
       </section>
