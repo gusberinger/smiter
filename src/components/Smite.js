@@ -31,7 +31,7 @@ const rollDice = (totalDice, sides, bonus) => {
   return total
 }
 
-const rollDamage = (sword, smiteLevel, special, criticalHit) => {
+const rollDamage = (sword, smiteLevel, special, criticalHit, improved) => {
   let smiteDice = 0
   let swordDice = sword.totalDice
   if (smiteLevel > 0) {
@@ -39,6 +39,9 @@ const rollDamage = (sword, smiteLevel, special, criticalHit) => {
   }
   if (special)
     smiteDice++ // if fiend or undead, can go beyond 5d8
+  if (improved) {
+    smiteDice++;
+  }
   if (criticalHit) {
     smiteDice *= 2
     swordDice *= 2
@@ -65,9 +68,10 @@ const Smite = () => {
   const childToParent = (childData) => {
     console.log(childData)
     const sword = parseString(childData.swordDamage)
-    const damage = rollDamage(sword, childData.smiteLevel, childData.special, childData.critical)
+    const damage = rollDamage(sword, childData.smiteLevel, childData.special, childData.critical, childData.improved)
     console.log(damage)
     setResults(damage)
+
   }
 
   return (
@@ -84,7 +88,7 @@ const Smite = () => {
           { (results.smiteDamage > 0) &&
           <>
           <p>
-            <i>Divine Smite Damage ({results.smiteText}): </i> {results.smiteDamage}
+            <i>Radiant Damage ({results.smiteText}): </i> {results.smiteDamage}
           </p>
           <hr/>
           <p>

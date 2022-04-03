@@ -41,13 +41,19 @@ const SmiteForm = ({childToParent}) => {
 
       <div className="item">
         <label forhtml="special-label">Fiend/Undead</label>
-        <input {...register("special")} type="checkbox" label="special-label"/>
+        <input {...register("special")} type="checkbox" label="special-label" className='checkmark'/>
       </div>
 
       <div className="item">
         <label forhtml="critical-label">Critical Hit</label>
-        <input {...register("critical")} type="checkbox" label="critical-label"/>
+        <input {...register("critical")} type="checkbox" label="critical-label" className='checkmark'/>
       </div>
+
+      <div className="item">
+        <label forhtml="improved-label">Improved Divine Smite</label>
+        <input {...register("improved")} type="checkbox" label="improved-label" className='checkmark'/>
+      </div>
+
       <button className="btn">Roll Damage</button>
 
     </form>
