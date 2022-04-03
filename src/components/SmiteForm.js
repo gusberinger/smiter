@@ -1,12 +1,12 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
-const SmiteForm = () => {
+const SmiteForm = ({childToParent}) => {
   
   const {register, handleSubmit, formState: {errors}} = useForm()
 
   return (
-    <form onSubmit={handleSubmit(data => console.log(data))}>
+    <form onSubmit={handleSubmit(childToParent)}>
       <div className="item">
         <label forhtml="swordDamage">Sword Damage</label>
         <input 
