@@ -73,11 +73,9 @@ const Smite = () => {
   const [results, setResults] = useState(null)
 
   const childToParent = (childData) => {
-    console.log(childData)
     const sword = parseString(childData.swordDamage)
     const damage = rollDamage(sword, childData.smiteLevel, childData.special, 
                               childData.critical, childData.improved, childData.holy)
-    console.log(damage)
     setResults(damage)
   }
 
