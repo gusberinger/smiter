@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Button from "./Button";
 import "./SmiteForm.css";
@@ -15,11 +15,11 @@ const SmiteForm = ({ childToParent }) => {
   const setData = () => {
     const form_json = JSON.stringify(getValues())
     console.log(form_json)
-    localStorage.setItem("formData", form_json);
+    sessionStorage.setItem("formData", form_json);
   };
 
   const getData = () => {
-    const data_json = localStorage.getItem("formData");
+    const data_json = sessionStorage.getItem("formData");
     if (data_json === null)
       return
     const data = JSON.parse(data_json)
@@ -27,6 +27,10 @@ const SmiteForm = ({ childToParent }) => {
       setValue(key, data[key])
     })
   };
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   return (
     <form onSubmit={handleSubmit(childToParent)}>
