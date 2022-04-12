@@ -34,22 +34,6 @@ const SmiteForm = ({ childToParent }) => {
 
   return (
     <form onSubmit={handleSubmit(childToParent)}>
-      <button
-        onClick={(event) => {
-          event.preventDefault();
-          getData();
-        }}
-      >
-        GET
-      </button>
-      <button
-        onClick={(event) => {
-          event.preventDefault();
-          setData();
-        }}
-      >
-        SET
-      </button>
       <div className="item">
         <label forhtml="swordDamage">Sword Damage</label>
         <input
